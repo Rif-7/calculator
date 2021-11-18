@@ -18,16 +18,15 @@ button {
     font-family: monospace;
     font-weight: 600;
     margin: 4px;
-    height: 50px;
-    width: 40px;
     font-size:16px;
-    flex: 1 1 auto;
+    flex: 1 1 0;
+    align-self: stretch;
     border-radius: 18px;
 }
 
 .calculations {
     margin: 8px;
-    height: 100px;
+    height: 120px;
     background-color: black;
     border-radius: 18px;
 }
@@ -35,10 +34,13 @@ button {
 .row {
     display: flex;
     justify-content: space-between;
+    
     margin: 2px 8px;
+    flex: 1 1 auto;
 }
 
 .inputs {
+    flex: 1 1 auto;
     display: flex;
     flex-direction: column;
 }
