@@ -18,7 +18,7 @@ button {
     font-family: monospace;
     font-weight: 600;
     margin: 4px;
-    font-size:16px;
+    font-size: 18px;
     flex: 1 1 0;
     align-self: stretch;
     border-radius: 18px;
@@ -29,6 +29,7 @@ button {
     height: 120px;
     background-color: black;
     border-radius: 18px;
+    color: whitesmoke;
 }
 
 .row {
@@ -43,4 +44,11 @@ button {
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
+}
+
+.text-content {
+    padding: 16px;
+    display: flex;
+    font-size: 24px;
+    justify-content: flex-end;
 }
