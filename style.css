@@ -56,10 +56,6 @@ button {
     justify-content: flex-end;
 }
 
-.clear, .backspace, .add {
-    flex: 1 1 auto;
-}
-
 
 .equal {
     flex: 2 1 auto;

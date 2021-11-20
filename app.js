@@ -2,6 +2,7 @@ let add = (a, b) => Number(a) + Number(b);
 let sub = (a, b) => a - b;
 let divide = (a, b) => a / b;
 let multiply = (a, b) => a * b;
+let mod = (a, b) => a % b;
 
 let currentResult = null;
 let currentNumber = "";
@@ -22,6 +23,9 @@ function operate(a, b, operator) {
             break;
         case "/":
             result = divide(a, b);
+            break;
+        case "%":
+            result = mod(a, b);
             break;
     }
     return result.toFixed(2);
