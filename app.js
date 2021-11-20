@@ -6,7 +6,6 @@ let multiply = (a, b) => a * b;
 let currentResult = null;
 let currentNumber = "";
 let operator = "";
-let lastDigit = null;
 let equalled = false;
 
 function operate(a, b, operator) {
@@ -35,13 +34,13 @@ function fillDisplay(e) {
     if (equalled) {
         display.innerHTML = "";
         document.querySelector(".result").innerHTML = "";
+        equalled = false;
     }
     display.textContent += text;
 }
 
 function updateCurrentNum(e) {
-    lastDigit = e.target.getAttribute("data-value");
-    currentNumber += lastDigit;
+    currentNumber += e.target.getAttribute("data-value");
 }
 
 function doMath(e) {
@@ -61,6 +60,17 @@ function doMath(e) {
     document.querySelector(".result").textContent = currentResult;
     return;
 }
+
+function backSpace() {
+    if (currentNumber === "") {
+        return;
+    }
+    displayText = document.querySelector(".text-content");
+    currentNumber = currentNumber.slice(0, -1);
+    displayText.textContent = displayText.textContent.slice(0, -1);
+    return;
+}
+
 
 
 
@@ -108,3 +118,6 @@ const decimalBtn = document.querySelector(".decimal");
 decimalBtn.addEventListener("click", () => {
     decimalBtn.disabled = true;
 })
+
+const backSpaceBtn = document.querySelector(".backspace");
+backSpaceBtn.addEventListener("click", backSpace);
