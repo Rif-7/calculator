@@ -1,4 +1,4 @@
-let add = (a, b) => a + b;
+let add = (a, b) => Number(a) + Number(b);
 let sub = (a, b) => a - b;
 let divide = (a, b) => a / b;
 let multiply = (a, b) => a * b;
@@ -6,6 +6,8 @@ let multiply = (a, b) => a * b;
 let currentResult = null;
 let currentNumber = "";
 let operator = "";
+let lastDigit = null;
+let equalled = false;
 
 function operate(a, b, operator) {
     let result;
@@ -23,21 +25,27 @@ function operate(a, b, operator) {
             result = divide(a, b);
             break;
     }
-    return result;
+    return result.toFixed(2);
 }
 
 
 function fillDisplay(e) {
+    let text  = e.target.textContent;
     const display = document.querySelector(".text-content");
-    display.textContent += e.target.textContent;
+    if (equalled) {
+        display.innerHTML = "";
+        document.querySelector(".result").innerHTML = "";
+    }
+    display.textContent += text;
 }
 
 function updateCurrentNum(e) {
-    currentNumber += e.target.getAttribute("data-value");
-    console.log(currentNumber);
+    lastDigit = e.target.getAttribute("data-value");
+    currentNumber += lastDigit;
 }
 
 function doMath(e) {
+    decimalBtn.disabled = false;
     if (currentResult === null ) {
         currentResult = Number(currentNumber);
         currentNumber = "";
@@ -46,7 +54,6 @@ function doMath(e) {
     } else {
         currentResult = operate(currentResult, Number(currentNumber), operator);
         currentNumber = "";
-        console.log(currentResult);
     }
     const display1 = document.querySelector(".text-content");
     display1.textContent += e.target.textContent;
@@ -61,18 +68,27 @@ function doMath(e) {
 const buttons = document.querySelectorAll(".key");
 buttons.forEach((button) => {
     button.addEventListener("click", updateCurrentNum);
-    button.addEventListener("click", fillDisplay);
+    button.addEventListener("click", fillDisplay);  
 })
 
 const funcKeys = document.querySelectorAll(".func");
 funcKeys.forEach((funcKey) => {
     funcKey.addEventListener("click", doMath);
+    funcKey.addEventListener("click", () => {
+        document.querySelector(".result").innerHTML = "";
+        if (equalled) {
+            document.querySelector(".text-content").innerHTML = "";
+            equalled = false;
+        }
+    })
 })
 
 const clearBtn = document.querySelector(".clear");
 clearBtn.addEventListener("click", () => {
     document.querySelector(".text-content").innerHTML = "";
+    document.querySelector(".result").innerHTML = "";
     currentResult = null;
+    currentNumber = "";
 })
 
 const equalBtn = document.querySelector(".equal");
@@ -80,6 +96,15 @@ equalBtn.addEventListener("click", () => {
     let finalResult = operate(currentResult, currentNumber, operator);
     const resultDisplay = document.querySelector(".result");
     resultDisplay.textContent = finalResult;
+
     currentNumber = Number(finalResult);
     currentResult = null;
+    decimalBtn.disabled = false;
+    equalled = true;
+
+})
+
+const decimalBtn = document.querySelector(".decimal");
+decimalBtn.addEventListener("click", () => {
+    decimalBtn.disabled = true;
 })
