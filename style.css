@@ -2,6 +2,7 @@ body {
     display: flex;
     justify-content: center;
     font-family: monospace;
+    background-color: #1F2937;
 }
 
 .container {
@@ -9,15 +10,18 @@ body {
     flex-direction: column;
     width: 460px;
     height: 600px;
-    background-color: whitesmoke;
-    border: 2px solid gray;
+    background-color: #1F2937;
+    border: 5px solid #3882F6;
     border-radius: 18px;
 }
 
 button {
     font-family: monospace;
-    font-weight: 600;
+    font-weight: 1000;
     margin: 4px;
+    background-color: #388087;
+    border: 2px solid #3882F6;
+    color: black;
     font-size: 18px;
     flex: 1 1 0;
     align-self: stretch;
@@ -27,9 +31,8 @@ button {
 .calculations {
     margin: 8px;
     height: 120px;
-    background-color: black;
     border-radius: 18px;
-    color: whitesmoke;
+    background-color: #388087;
 }
 
 .row {
